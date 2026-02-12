@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dan Cheng, M.D. - Postdoctoral Scholar specializing in neuroradiology and vascular imaging at University of Alabama at Birmingham">
+    <title>Dan Cheng, M.D. | Neuroradiology & Vascular Imaging</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --primary-color: #0f172a;
+            --primary-light: #1e293b;
+            --accent-color: #3b82f6;
+            --accent-light: #60a5fa;
+            --accent-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            --text-color: #1e293b;
+            --text-light: #64748b;
+            --text-muted: #94a3b8;
+            --bg-color: #ffffff;
+            --bg-light: #f8fafc;
+            --bg-card: #ffffff;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+            --sidebar-width: 320px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--bg-light);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        a:hover {
+            color: var(--accent-light);
+        }
+
+        /* Layout Container */
+        .layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Left Sidebar */
+        .sidebar {
+            width: var(--sidebar-width);
+            background: linear-gradient(180deg, var(--primary-color) 0%, #1e3a5f 100%);
+            color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            overflow-y: auto;
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(ellipse at 50% 0%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 100%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .sidebar-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .profile-photo {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center top;
+            border: 4px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            margin: 0 auto 24px;
+        }
+
+        .sidebar h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .sidebar .title {
+            font-size: 1rem;
+            opacity: 0.95;
+            margin-bottom: 4px;
+            font-weight: 400;
+        }
+
+        .sidebar .institution {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-bottom: 24px;
+            line-height: 1.5;
+        }
+
+        .sidebar-divider {
+            width: 50px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.2);
+            margin: 0 auto 24px;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar-nav {
+            margin-bottom: 24px;
+        }
+
+        .sidebar-nav a {
+            display: block;
+            color: rgba(255, 255, 255, 0.8);
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            margin-bottom: 4px;
+        }
+
+        .sidebar-nav a:hover,
+        .sidebar-nav a.active {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        /* Contact Info in Sidebar */
+        .sidebar-contact {
+            margin-top: auto;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.85rem;
+            margin-bottom: 12px;
+        }
+
+        .contact-item svg {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+        }
+
+        .contact-item a {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .contact-item a:hover {
+            color: white;
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .social-link {
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.2s ease;
+        }
+
+        .social-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            color: white;
+        }
+
+        .social-link svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Main Content Area */
+        .main-content {
+            flex: 1;
+            margin-left: var(--sidebar-width);
+            padding: 40px 50px;
+            max-width: calc(100% - var(--sidebar-width));
+        }
+
+        /* Sections */
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.75rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 28px;
+            background: var(--accent-gradient);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-text {
+            color: var(--text-light);
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        .about-text:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Tags */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .tag {
+            background: linear-gradient(135deg, #eff6ff 0%, #f0f9ff 100%);
+            color: var(--accent-color);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid rgba(59, 130, 246, 0.15);
+        }
+
+        /* Expertise Grid */
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .expertise-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .expertise-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .expertise-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.05rem;
+            color: var(--text-color);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .expertise-card h3 span {
+            font-size: 1.3rem;
+        }
+
+        .expertise-card p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 24px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 4px;
+            bottom: 4px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--accent-color) 0%, var(--border-color) 100%);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 24px;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -24px;
+            top: 4px;
+            width: 12px;
+            height: 12px;
+            background: white;
+            border: 3px solid var(--accent-color);
+            border-radius: 50%;
+        }
+
+        .timeline-item.current::before {
+            background: var(--accent-color);
+        }
+
+        .timeline-date {
+            font-size: 0.75rem;
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .timeline-title {
+            font-size: 1.05rem;
+            color: var(--text-color);
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .timeline-org {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* Publications */
+        .publication {
+            padding: 20px;
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            margin-bottom: 16px;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .publication:last-child {
+            margin-bottom: 0;
+        }
+
+        .publication:hover {
+            box-shadow: var(--shadow-md);
+            border-left-color: var(--accent-color);
+        }
+
+        .publication .authors {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .publication .authors .highlight {
+            font-weight: 600;
+            color: var(--accent-color);
+        }
+
+        .publication .pub-title {
+            font-size: 1rem;
+            color: var(--text-color);
+            font-weight: 500;
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .publication .journal {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .publication .year {
+            background: linear-gradient(135deg, #f0f9ff 0%, #eff6ff 100%);
+            color: var(--accent-color);
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.75rem;
+        }
+
+        .publications-more {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .publications-more a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .publications-more svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Honors & Activities */
+        .honors-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        .honor-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 20px;
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .honor-item:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .honor-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--accent-gradient);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .honor-icon svg {
+            width: 22px;
+            height: 22px;
+            color: white;
+        }
+
+        .honor-content {
+            flex: 1;
+        }
+
+        .honor-year {
+            font-size: 0.75rem;
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .honor-title {
+            font-size: 1rem;
+            color: var(--text-color);
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .honor-org {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .subsection-title {
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin: 28px 0 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .activities-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .activity-tag {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            font-size: 0.9rem;
+            color: var(--text-color);
+        }
+
+        .activity-tag span {
+            font-size: 0.75rem;
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        /* Publication Tags */
+        .pub-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 10px;
+        }
+
+        .pub-tag {
+            font-size: 0.7rem;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-weight: 500;
+        }
+
+        .pub-tag.brain-tumor {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .pub-tag.ai {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .pub-tag.stroke {
+            background: #fce7f3;
+            color: #9d174d;
+        }
+
+        .pub-tag.spinal {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .pub-tag.vascular {
+            background: #ede9fe;
+            color: #5b21b6;
+        }
+
+        .pub-tag.genetics {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        /* Featured Research */
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .research-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 28px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .research-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+        }
+
+        .research-card.ai-tumor::before {
+            background: linear-gradient(90deg, #3b82f6 0%, #8b5cf6 100%);
+        }
+
+        .research-card.vessel-wall::before {
+            background: linear-gradient(90deg, #ec4899 0%, #f43f5e 100%);
+        }
+
+        .research-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-3px);
+        }
+
+        .research-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 18px;
+            font-size: 1.8rem;
+        }
+
+        .research-card.ai-tumor .research-icon {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+        }
+
+        .research-card.vessel-wall .research-icon {
+            background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%);
+        }
+
+        .research-card h3 {
+            font-size: 1.15rem;
+            color: var(--text-color);
+            font-weight: 600;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .research-card .research-desc {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .research-highlights {
+            list-style: none;
+            margin-bottom: 18px;
+        }
+
+        .research-highlights li {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            padding: 6px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .research-highlights li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        .research-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent-color);
+        }
+
+        .research-link svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        /* Insights Section */
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .insight-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .insight-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.85);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .insight-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .insight-icon {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            opacity: 0.4;
+        }
+
+        .insight-card h3 {
+            font-size: 1rem;
+            color: var(--text-color);
+            font-weight: 600;
+            margin-bottom: 8px;
+            opacity: 0.5;
+        }
+
+        .insight-card p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            opacity: 0.5;
+        }
+
+        /* Responsive for new sections */
+        @media (max-width: 1024px) {
+            .research-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .insights-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .research-card {
+                padding: 20px;
+            }
+
+            .insight-card {
+                padding: 20px;
+            }
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            :root {
+                --sidebar-width: 280px;
+            }
+
+            .main-content {
+                padding: 30px 40px;
+            }
+
+            .expertise-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .layout {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                position: relative;
+                width: 100%;
+                height: auto;
+                padding: 30px 20px;
+            }
+
+            .profile-photo {
+                width: 120px;
+                height: 120px;
+            }
+
+            .sidebar h1 {
+                font-size: 1.5rem;
+            }
+
+            .sidebar-nav {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 8px;
+            }
+
+            .sidebar-nav a {
+                padding: 8px 14px;
+                font-size: 0.85rem;
+            }
+
+            .main-content {
+                margin-left: 0;
+                max-width: 100%;
+                padding: 24px 20px;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .expertise-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .expertise-card {
+                padding: 18px;
+            }
+
+            .publication {
+                padding: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .sidebar {
+                padding: 24px 16px;
+            }
+
+            .profile-photo {
+                width: 100px;
+                height: 100px;
+            }
+
+            .sidebar h1 {
+                font-size: 1.3rem;
+            }
+
+            .sidebar .title {
+                font-size: 0.9rem;
+            }
+
+            .sidebar .institution {
+                font-size: 0.8rem;
+            }
+
+            .sidebar-nav a {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+
+            .main-content {
+                padding: 20px 16px;
+            }
+
+            .section-title {
+                font-size: 1.3rem;
+            }
+
+            .tags {
+                gap: 8px;
+            }
+
+            .tag {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .sidebar {
+                display: none;
+            }
+
+            .main-content {
+                margin-left: 0;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="layout">
+        <!-- Left Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-content">
+                <img src="photo.jpg" alt="Dan Cheng" class="profile-photo">
+                <h1>Dan Cheng, M.D.</h1>
+                <p class="title">Postdoctoral Scholar</p>
+                <p class="institution">Department of Radiology<br>University of Alabama at Birmingham</p>
+
+                <div class="sidebar-divider"></div>
+
+                <!-- Navigation -->
+                <nav class="sidebar-nav">
+                    <a href="#about">About</a>
+                    <a href="#expertise">Expertise</a>
+                    <a href="#research">Research</a>
+                    <a href="#career">Career</a>
+                    <a href="#publications">Publications</a>
+                    <a href="#insights">Insights</a>
+                    <a href="#honors">Honors</a>
+                </nav>
+
+                <!-- Contact -->
+                <div class="sidebar-contact">
+                    <div class="contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                        </svg>
+                        <a href="mailto:Dancheng@uabmc.edu">Dancheng@uabmc.edu</a>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="https://scholar.google.com/citations?user=g7s45kIAAAAJ&hl=en" target="_blank" class="social-link" title="Google Scholar">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342" />
+                            </svg>
+                        </a>
+                        <a href="https://twitter.com/" target="_blank" class="social-link" title="Twitter/X">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            </svg>
+                        </a>
+                        <a href="https://linkedin.com/in/" target="_blank" class="social-link" title="LinkedIn">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- About Section -->
+            <section id="about" class="section">
+                <h2 class="section-title">About</h2>
+                <p class="about-text">
+                    Welcome! I'm a radiologist and postdoctoral scholar at UAB, where I combine my passion for neuroimaging with cutting-edge AI technology. My journey spans from Beijing to Seattle, and now Birmingham — each step deepening my commitment to improving how we diagnose and treat brain diseases.
+                </p>
+                <p class="about-text">
+                    My research focuses on developing deep learning tools for brain tumor classification and using vessel wall MRI to prevent strokes. This work has been published in leading journals including <em>Clinical Cancer Research</em>, <em>Neuro-Oncology</em>, and <em>Radiology: Artificial Intelligence</em>. I'm currently supported by the Ron and Christine Lee Raccoon Stroke Research Fellowship as I continue exploring new frontiers in cerebrovascular imaging.
+                </p>
+                <p class="about-text">
+                    Beyond research, I'm driven by a simple goal: translating complex imaging innovations into real benefits for patients. Whether through academic collaboration or science communication, I believe in making medical imaging more accessible and impactful.
+                </p>
+                <div class="tags">
+                    <span class="tag">Brain Tumor Imaging</span>
+                    <span class="tag">Vessel Wall MRI</span>
+                    <span class="tag">Deep Learning</span>
+                    <span class="tag">Stroke Imaging</span>
+                    <span class="tag">Neuroradiology</span>
+                </div>
+            </section>
+
+            <!-- Expertise Section -->
+            <section id="expertise" class="section">
+                <h2 class="section-title">Expertise & Research</h2>
+                <div class="expertise-grid">
+                    <div class="expertise-card">
+                        <h3><span>🧠</span> Neuroradiology</h3>
+                        <p>Brain tumor imaging, stroke imaging, vessel wall MRI</p>
+                    </div>
+                    <div class="expertise-card">
+                        <h3><span>🤖</span> AI in Radiology</h3>
+                        <p>Deep learning for image analysis, automated diagnosis</p>
+                    </div>
+                    <div class="expertise-card">
+                        <h3><span>🔬</span> Research Collaboration</h3>
+                        <p>Open to academic partnerships and multi-center studies</p>
+                    </div>
+                    <div class="expertise-card">
+                        <h3><span>🎓</span> Academic Exchange</h3>
+                        <p>Lectures, workshops, visiting scholar opportunities</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Research Section -->
+            <section id="research" class="section">
+                <h2 class="section-title">Featured Research</h2>
+                <div class="research-grid">
+                    <div class="research-card ai-tumor">
+                        <div class="research-icon">🧬</div>
+                        <h3>Deep Learning for Brain Tumor Classification</h3>
+                        <p class="research-desc">
+                            Developing fully automated deep learning models to predict molecular subtypes of posterior fossa ependymomas, enabling non-invasive tumor characterization for improved treatment planning.
+                        </p>
+                        <ul class="research-highlights">
+                            <li>Published in Clinical Cancer Research (2024)</li>
+                            <li>Fully automated pipeline from MRI to prediction</li>
+                            <li>High clinical applicability potential</li>
+                        </ul>
+                        <a href="#publications" class="research-link">
+                            Related publications
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                            </svg>
+                        </a>
+                    </div>
+
+                    <div class="research-card vessel-wall">
+                        <div class="research-icon">🫀</div>
+                        <h3>Vessel Wall MRI for Stroke Prevention</h3>
+                        <p class="research-desc">
+                            Utilizing high-resolution vessel wall MRI to characterize intracranial atherosclerotic plaques, identifying high-risk features for stroke prediction and prevention strategies.
+                        </p>
+                        <ul class="research-highlights">
+                            <li>Plaque characterization and risk stratification</li>
+                            <li>Multi-center research collaboration</li>
+                            <li>Integration with clinical stroke prevention</li>
+                        </ul>
+                        <a href="#publications" class="research-link">
+                            Related publications
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Career Section -->
+            <section id="career" class="section">
+                <h2 class="section-title">Career & Education</h2>
+                <div class="timeline">
+                    <div class="timeline-item current">
+                        <div class="timeline-date">2025 - Present</div>
+                        <div class="timeline-title">Postdoctoral Scholar</div>
+                        <div class="timeline-org">University of Alabama at Birmingham, USA</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2024 - 2025</div>
+                        <div class="timeline-title">Postdoctoral Fellow</div>
+                        <div class="timeline-org">University of Washington, Seattle, USA</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2019 - 2024</div>
+                        <div class="timeline-title">Radiologist & Resident</div>
+                        <div class="timeline-org">Beijing Tiantan Hospital, Capital Medical University, China</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2010 - 2019</div>
+                        <div class="timeline-title">M.D. (8-year program)</div>
+                        <div class="timeline-org">Sun Yat-sen University, Guangzhou, China</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Publications Section -->
+            <section id="publications" class="section">
+                <h2 class="section-title">Selected Publications</h2>
+
+                <div class="publication">
+                    <div class="authors"><span class="highlight">Cheng D</span>, et al.</div>
+                    <div class="pub-title">A Fully Automated Deep-Learning Model for Predicting the Molecular Subtypes of Posterior Fossa Ependymomas</div>
+                    <div class="journal">Clinical Cancer Research <span class="year">2024</span></div>
+                    <div class="pub-tags">
+                        <span class="pub-tag brain-tumor">Brain Tumor</span>
+                        <span class="pub-tag ai">AI</span>
+                    </div>
+                </div>
+
+                <div class="publication">
+                    <div class="authors"><span class="highlight">Cheng D</span>, et al.</div>
+                    <div class="pub-title">Prediction of H3K27M Alteration Status in Brainstem Glioma Using Multi-Shell Diffusion MRI Metrics</div>
+                    <div class="journal">Journal of Magnetic Resonance Imaging <span class="year">2024</span></div>
+                    <div class="pub-tags">
+                        <span class="pub-tag brain-tumor">Brain Tumor</span>
+                        <span class="pub-tag ai">AI</span>
+                    </div>
+                </div>
+
+                <div class="publication">
+                    <div class="authors"><span class="highlight">Cheng D</span>, et al.</div>
+                    <div class="pub-title">Amide proton transfer-weighted imaging and derived radiomics in the classification of adult-type diffuse gliomas</div>
+                    <div class="journal">European Radiology <span class="year">2024</span></div>
+                    <div class="pub-tags">
+                        <span class="pub-tag brain-tumor">Brain Tumor</span>
+                        <span class="pub-tag ai">AI</span>
+                    </div>
+                </div>
+
+                <div class="publication">
+                    <div class="authors"><span class="highlight">Cheng D</span>, et al.</div>
+                    <div class="pub-title">'Soap bubble' sign as an imaging marker for posterior fossa ependymoma Group B</div>
+                    <div class="journal">Neuroradiology <span class="year">2023</span></div>
+                    <div class="pub-tags">
+                        <span class="pub-tag brain-tumor">Brain Tumor</span>
+                    </div>
+                </div>
+
+                <div class="publication">
+                    <div class="authors"><span class="highlight">Cheng D</span>, et al.</div>
+                    <div class="pub-title">Amide proton transfer-weighted imaging of pediatric brainstem glioma</div>
+                    <div class="journal">Acta Radiologica <span class="year">2023</span></div>
+                    <div class="pub-tags">
+                        <span class="pub-tag brain-tumor">Brain Tumor</span>
+                    </div>
+                </div>
+
+                <div class="publication">
+                    <div class="authors"><span class="highlight">Cheng D</span>, et al.</div>
+                    <div class="pub-title">Deep learning based on preoperative MR images improves survival prediction in spinal cord astrocytomas</div>
+                    <div class="journal">Neuro-Oncology <span class="year">2023</span></div>
+                    <div class="pub-tags">
+                        <span class="pub-tag spinal">Spinal</span>
+                        <span class="pub-tag ai">AI</span>
+                    </div>
+                </div>
+
+                <div class="publication">
+                    <div class="authors"><span class="highlight">Cheng D</span>, et al.</div>
+                    <div class="pub-title">Deep Brain Stimulation Modulates Multiple Abnormal Resting-State Network Connectivity in Patients With Cervical Dystonia</div>
+                    <div class="journal">Frontiers in Neurology <span class="year">2022</span></div>
+                    <div class="pub-tags">
+                        <span class="pub-tag vascular">Neuroimaging</span>
+                    </div>
+                </div>
+
+                <div class="publication">
+                    <div class="authors"><span class="highlight">Cheng D</span>, et al.</div>
+                    <div class="pub-title">Automated Classification of Intramedullary Spinal Cord Tumors and Inflammatory Demyelinating Lesions</div>
+                    <div class="journal">Radiology: Artificial Intelligence <span class="year">2022</span></div>
+                    <div class="pub-tags">
+                        <span class="pub-tag spinal">Spinal</span>
+                        <span class="pub-tag ai">AI</span>
+                    </div>
+                </div>
+
+                <div class="publication">
+                    <div class="authors"><span class="highlight">Cheng D</span>, et al.</div>
+                    <div class="pub-title">Fetal Familial Cerebral Cavernous Malformation With a Novel Heterozygous KRIT1 Variation</div>
+                    <div class="journal">Neurology <span class="year">2021</span></div>
+                    <div class="pub-tags">
+                        <span class="pub-tag genetics">Genetics</span>
+                        <span class="pub-tag vascular">Vascular</span>
+                    </div>
+                </div>
+
+                <div class="publications-more">
+                    <a href="https://scholar.google.com/citations?user=g7s45kIAAAAJ&hl=en" target="_blank">
+                        View all publications on Google Scholar
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                        </svg>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Insights Section -->
+            <section id="insights" class="section">
+                <h2 class="section-title">Insights</h2>
+                <div class="insights-grid">
+                    <div class="insight-card">
+                        <div class="insight-overlay">Coming Soon</div>
+                        <div class="insight-icon">📷</div>
+                        <h3>Understanding Medical Imaging</h3>
+                        <p>CT, MRI, and more explained</p>
+                    </div>
+                    <div class="insight-card">
+                        <div class="insight-overlay">Coming Soon</div>
+                        <div class="insight-icon">🧠</div>
+                        <h3>Brain Health</h3>
+                        <p>Stroke, tumors, and neurological conditions</p>
+                    </div>
+                    <div class="insight-card">
+                        <div class="insight-overlay">Coming Soon</div>
+                        <div class="insight-icon">👤</div>
+                        <h3>For Patients</h3>
+                        <p>What to expect from your imaging exam</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Honors & Activities Section -->
+            <section id="honors" class="section">
+                <h2 class="section-title">Honors & Activities</h2>
+
+                <div class="honors-grid">
+                    <div class="honor-item">
+                        <div class="honor-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 18.75h-9m9 0a3 3 0 013 3h-15a3 3 0 013-3m9 0v-3.375c0-.621-.503-1.125-1.125-1.125h-.871M7.5 18.75v-3.375c0-.621.504-1.125 1.125-1.125h.872m5.007 0H9.497m5.007 0a7.454 7.454 0 01-.982-3.172M9.497 14.25a7.454 7.454 0 00.981-3.172M5.25 4.236c-.982.143-1.954.317-2.916.52A6.003 6.003 0 007.73 9.728M5.25 4.236V4.5c0 2.108.966 3.99 2.48 5.228M5.25 4.236V2.721C7.456 2.41 9.71 2.25 12 2.25c2.291 0 4.545.16 6.75.47v1.516M7.73 9.728a6.726 6.726 0 002.748 1.35m8.272-6.842V4.5c0 2.108-.966 3.99-2.48 5.228m2.48-5.492a46.32 46.32 0 012.916.52 6.003 6.003 0 01-5.395 4.972m0 0a6.726 6.726 0 01-2.749 1.35m0 0a6.772 6.772 0 01-3.044 0" />
+                            </svg>
+                        </div>
+                        <div class="honor-content">
+                            <div class="honor-year">2025</div>
+                            <div class="honor-title">Ron and Christine Lee Raccoon Stroke Research Fellowship</div>
+                            <div class="honor-org">University of Alabama at Birmingham</div>
+                        </div>
+                    </div>
+
+                    <div class="honor-item">
+                        <div class="honor-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
+                            </svg>
+                        </div>
+                        <div class="honor-content">
+                            <div class="honor-year">2022</div>
+                            <div class="honor-title">Board Certification in Radiology</div>
+                            <div class="honor-org">National Medical Licensing Examination, China</div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="subsection-title">Professional Memberships</h3>
+                <div class="activities-list">
+                    <div class="activity-tag"><span>Member</span> RSNA</div>
+                    <div class="activity-tag"><span>Member</span> ASNR</div>
+                </div>
+
+                <h3 class="subsection-title">Journal Reviewer</h3>
+                <div class="activities-list">
+                    <div class="activity-tag">American Journal of Neuroradiology</div>
+                    <div class="activity-tag">European Journal of Radiology</div>
+                    <div class="activity-tag">Frontiers in Public Health</div>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <div class="footer">
+                &copy; 2025 Dan Cheng. All rights reserved.
+            </div>
+        </main>
+    </div>
+</body>
+</html>
